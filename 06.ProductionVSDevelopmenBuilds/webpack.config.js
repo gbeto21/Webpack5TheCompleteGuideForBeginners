@@ -11,7 +11,7 @@ module.exports = {
         path: path.resolve(__dirname, './dist'),
         publicPath: ''
     },
-    mode: 'none',
+    mode: 'none', //You can use 'development' or 'production'
     module: {
         rules: [
             {
@@ -45,8 +45,8 @@ module.exports = {
                 use: {
                     loader: 'babel-loader',
                     options: {
-                        presets: [ '@babel/env' ],
-                        plugins: [ '@babel/plugin-proposal-class-properties' ]
+                        presets: ['@babel/env'],
+                        plugins: ['@babel/plugin-proposal-class-properties']
                     }
                 }
             },
