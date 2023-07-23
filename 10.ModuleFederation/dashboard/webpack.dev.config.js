@@ -12,9 +12,14 @@ module.exports = {
     },
     mode: 'development',
     devServer: {
-        contentBase: path.resolve(__dirname, './dist'),
-        index: 'dashboard.html',
         port: 9000,
+        static: {
+            directory: path.resolve(__dirname, './dist'),
+        },
+        devMiddleware: {
+            index: 'dashboard.html',
+            writeToDisk: true
+        },
         historyApiFallback: {
             index: 'dashboard.html'
         }
@@ -30,6 +35,12 @@ module.exports = {
                         presets: [ '@babel/env' ],
                     }
                 }
+            },
+            {
+                test: /\.scss$/,
+                use: [
+                    'style-loader', 'css-loader', 'sass-loader'
+                ]
             }
         ]
     },
@@ -38,6 +49,7 @@ module.exports = {
         new HtmlWebpackPlugin({
             filename: 'dashboard.html',
             title: 'Dashboard',
+            template: 'src/page-template.hbs'
         }),
         new ModuleFederationPlugin({
             name: 'App',
