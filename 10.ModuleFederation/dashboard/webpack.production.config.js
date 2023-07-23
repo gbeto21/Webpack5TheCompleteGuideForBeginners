@@ -47,8 +47,6 @@ module.exports = {
         new HtmlWebpackPlugin({
             filename: 'dashboard.html',
             title: 'Dashboard',
-            description: 'Dashboard is the Host Application for Microfrontends',
-            template: 'src/page-template.hbs'
         }),
         new ModuleFederationPlugin({
             name: 'App',
