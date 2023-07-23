@@ -71,8 +71,8 @@ module.exports = {
         new ModuleFederationPlugin({
             name: 'KiwiApp',
             remotes: {
-                HelloWorldApp: 'HelloWorldApp@http://localhost:9001/remoteEntry.js',
-            },
+                HelloWorldApp: 'HelloWorldApp@http://localhost:9001/remoteEntry.js'
+            }
         })
     ]
 };
