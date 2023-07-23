@@ -4,10 +4,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    entry: {
-        'hello-world': './src/hello-world.js',
-        'kiwi': './src/kiwi.js'
-    },
+    entry: './src/kiwi.js',
     output: {
         filename: '[name].[contenthash].js',
         path: path.resolve(__dirname, './dist'),
@@ -37,12 +34,6 @@ module.exports = {
                 type: 'asset/source'
             },
             {
-                test: /\.css$/,
-                use: [
-                    MiniCssExtractPlugin.loader, 'css-loader'
-                ]
-            },
-            {
                 test: /\.scss$/,
                 use: [
                     MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'
@@ -55,7 +46,6 @@ module.exports = {
                     loader: 'babel-loader',
                     options: {
                         presets: [ '@babel/env' ],
-                        plugins: [ '@babel/plugin-proposal-class-properties' ]
                     }
                 }
             },
@@ -73,15 +63,7 @@ module.exports = {
         }),
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
-            filename: 'hello-world.html',
-            chunks: ['hello-world'],
-            title: 'Hello world',
-            description: 'Hello world',
-            template: 'src/page-template.hbs'
-        }),
-        new HtmlWebpackPlugin({
             filename: 'kiwi.html',
-            chunks: ['kiwi'],
             title: 'Kiwi',
             description: 'Kiwi',
             template: 'src/page-template.hbs'
